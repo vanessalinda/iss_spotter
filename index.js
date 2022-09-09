@@ -9,6 +9,10 @@ nextISSTimesForMyLocation((error, passTimes) => {
     return console.log("It didn't work!", error);
   }
 
+  printPassTimes(passTimes);
+});
+
+const printPassTimes = (passTimes) => {
   passTimes.forEach((time) => {
     console.log(
       `Next pass at ${new Date(time.risetime * 1000).toLocaleString("en-us", {
@@ -23,7 +27,7 @@ nextISSTimesForMyLocation((error, passTimes) => {
       })} for ${time.duration} seconds.`
     );
   });
-});
+};
 
 // fetchMyIP((error, ip) => {
 //   if (error) {
@@ -67,3 +71,5 @@ nextISSTimesForMyLocation((error, passTimes) => {
 //     console.log("here are the flyovertimes:", data);
 //   }
 // );
+
+module.exports = { printPassTimes };
